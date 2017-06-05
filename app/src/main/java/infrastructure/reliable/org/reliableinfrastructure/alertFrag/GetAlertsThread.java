@@ -59,6 +59,7 @@ public class GetAlertsThread extends AsyncTask<Void, Void, List<String>> {
         super.onPostExecute(strings);
 
         listValues.clear();
+        alertMessages.clear();
         int size = strings.size();
         for (int i = 0; i < size; i++) {
             if (strings.get(i).length() > Constants.NUMBER_OF_CHARACTERS_TO_BE_SHOWN) {
