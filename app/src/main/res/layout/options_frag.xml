@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+            <RelativeLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:padding="16dp"
+                tools:context=".MainActivity"
+                android:background="#f7f9f4">
+
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Abonare orase"
+                    android:textStyle="italic"
+                    android:fontFamily="sans-serif-condensed"/>
+
+                <ListView
+                    android:id="@+id/listViewCities"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:choiceMode="multipleChoice"
+                    android:layout_below="@id/tv"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="Introduceti numarul de telefon"/>
+
+                <EditText
+                    android:id="@+id/phoneEditText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
+
+                <Button
+                    android:id="@+id/save_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|center_horizontal"
+                    android:text="Salveaza"/>
+            </LinearLayout>
+</LinearLayout>

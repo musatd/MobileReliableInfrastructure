@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "114321996845",
+    "firebase_url": "https://reliableinfrastructure-76e78.firebaseio.com",
+    "project_id": "reliableinfrastructure-76e78",
+    "storage_bucket": "reliableinfrastructure-76e78.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114321996845:android:1e29c7ace0815903",
+        "android_client_info": {
+          "package_name": "infrastructure.reliable.org.reliableinfrastructure"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114321996845-f5vi85ond9c9c4iudv0th7ef6kpremp1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtnOWR-2oUHtgakliskWQDF9ACZMoMTn4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
