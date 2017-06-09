@@ -30,7 +30,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.Date;
 import java.util.Map;
+import java.util.Random;
 
 import infrastructure.reliable.org.reliableinfrastructure.AlertActivity;
 import infrastructure.reliable.org.reliableinfrastructure.R;
@@ -39,6 +41,7 @@ import infrastructure.reliable.org.reliableinfrastructure.general.Constants;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private static final String TAG = "MyFirebaseMsgService";
+    private static Integer notificationID = 0;
 
     /**
      * Called when message is received.
@@ -66,11 +69,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Check if message contains a data payload.
         if (remoteMessage.getData().size() > 0) {
             Map<String, String> data = remoteMessage.getData();
-            String token = FirebaseInstanceId.getInstance().getToken();
-            Long idAlert = Long.parseLong(data.get("idalert"));
             Log.d(TAG, "Message data payload: " + data);
-            SendACKThread sendACKThread = new SendACKThread(idAlert, token);
-            sendACKThread.start();
+            String token = FirebaseInstanceId.getInstance().getToken();
+            String idAlertString = data.get("idalert");
+            if (idAlertString != null && !idAlertString.equals("")) {
+                Long idAlert = Long.parseLong(idAlertString);
+                SendACKThread sendACKThread = new SendACKThread(idAlert, token);
+                sendACKThread.start();
+            }
             this.createNotification(data);
         } else {
             Log.e(TAG, "Unexpected type of message received. Notification payload is not treated by application");
@@ -89,8 +95,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Intent intent = new Intent(this, AlertActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         intent.putExtra(Constants.ALERT_MESSAGE, data.get("body"));
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0 /* Request code */, intent,
-                                                                                        PendingIntent.FLAG_ONE_SHOT);
+
+        Log.i(TAG, String.valueOf(notificationID));
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, notificationID /* Request code */,
+                                                                        intent, PendingIntent.FLAG_ONE_SHOT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
@@ -104,7 +112,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationManager notificationManager =
                 (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
-        notificationManager.notify(0 /* ID of notification */, notificationBuilder.build());
+
+        notificationManager.notify(notificationID/* ID of notification */, notificationBuilder.build());
+        notificationID++;
     }
 
 

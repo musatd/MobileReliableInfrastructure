@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Exchanger;
 
 import infrastructure.reliable.org.reliableinfrastructure.general.Constants;
 import infrastructure.reliable.org.reliableinfrastructure.general.Utilities;
@@ -45,7 +46,8 @@ public class GetAlertsThread extends AsyncTask<Void, Void, List<String>> {
         List<String> results;
         try {
             results = (List<String>) restTemplate.postForObject(Constants.WEB_SERVICE_GET_ALERTS, token, List.class);
-        } catch (HttpClientErrorException | HttpServerErrorException e) {
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
             results = new ArrayList<>();
         }
 

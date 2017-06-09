@@ -35,22 +35,17 @@ public class SaveOptionsThread extends AsyncTask<Void, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Void... params) {
+        RestTemplate restTemplate = Utilities.getRestTemplate();
+
+        Boolean isSaved;
         try {
-            RestTemplate restTemplate = Utilities.getRestTemplate();
-
-            Boolean isSaved;
-            try {
-                isSaved = restTemplate.postForObject(Constants.WEB_SERVICE_CREATE_CLIENT, user, Boolean.class);
-            } catch (HttpClientErrorException httpClientErrorException) {
-                isSaved = false;
-            }
-
-            return isSaved;
+            isSaved = restTemplate.postForObject(Constants.WEB_SERVICE_CREATE_CLIENT, user, Boolean.class);
         } catch (Exception e) {
-            Log.e(TAG, e.getMessage(), e);
+            Log.e(TAG, e.getMessage());
+            isSaved = false;
         }
 
-        return null;
+        return isSaved;
     }
 
     @Override
