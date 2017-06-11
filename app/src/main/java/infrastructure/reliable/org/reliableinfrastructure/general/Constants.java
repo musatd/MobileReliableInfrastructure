@@ -6,9 +6,9 @@ public interface Constants {
 
     final public static boolean DEBUG = true;
 
-    final public static String WEB_SERVICE_CREATE_CLIENT = "http://05a05911.ngrok.io/clients/saveClient";
-    final public static String WEB_SERVICE_GET_ALERTS = "http://05a05911.ngrok.io/alerts/getClientAlerts";
-    final public static String WEB_SERVICE_SEND_ACK = "http://05a05911.ngrok.io/alerts/sendACK";
+    final public static String WEB_SERVICE_CREATE_CLIENT = "http://9b31360b.ngrok.io/clients/saveClient";
+    final public static String WEB_SERVICE_GET_ALERTS = "http://9b31360b.ngrok.io/alerts/getClientAlerts";
+    final public static String WEB_SERVICE_SEND_ACK = "http://9b31360b.ngrok.io/alerts/sendACK";
 
     final public static String ALERT_MESSAGE = "infrastructure.reliable.org.reliableinfrastructure.alert_message";
     final public static String USER_PREFERENCES = "infrastructure.reliable.org.reliableinfrastructure.user_preferences";

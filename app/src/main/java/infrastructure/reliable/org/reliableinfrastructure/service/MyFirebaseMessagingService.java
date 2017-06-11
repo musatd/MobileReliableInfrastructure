@@ -98,7 +98,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         Log.i(TAG, String.valueOf(notificationID));
         PendingIntent pendingIntent = PendingIntent.getActivity(this, notificationID /* Request code */,
-                                                                        intent, PendingIntent.FLAG_ONE_SHOT);
+                                                                        intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         Uri defaultSoundUri= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
